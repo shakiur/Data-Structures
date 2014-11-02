@@ -5,30 +5,28 @@
 
 class Queue{
     LLNode* front;
-    LLNode* tail;
+    LLNode* back;
 
     public:
-        Queue() : front(NULL), tail(NULL){}
+        Queue() : front(NULL), back(NULL){}
+
+        bool isEmpty() { return front == NULL; }
 
         void enqueue(int d){
             LLNode* n = new LLNode(d);
 
             if(front == NULL){
                 front = n;
-                tail = n;
+                back = n;
             }
             else{
-                tail->setNext(n);
-                tail = n;
+                back->setNext(n);
+                back = n;
             }
         }
 
         LLNode* dequeue(){
             if(front){
-
-                // If only 1 element in queue
-                if(front == tail)
-                    tail = tail->getNext();
 
                 LLNode* temp = front;
                 front = front->getNext();
