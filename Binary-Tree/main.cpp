@@ -1,5 +1,6 @@
 #include <iostream>
 #include "headers/BTNode.h"
+#include "headers/Queue.h"
 
 // Builds sample binary tree
 BTNode* buildTree();
@@ -14,6 +15,9 @@ int getHeight(BTNode*);
 void BFS(BTNode*);
 void BFSLevel(BTNode*, int);
 
+// Breadth first traversal with queue
+void BFSQueue(BTNode*);
+void BFSQueueLevel(BTNode*, Queue*);
 int main(){
 
 	BTNode * root = buildTree();
@@ -33,6 +37,11 @@ int main(){
 	std::cout << "Breadth First Traversal: ";
 	BFS(root);
 	std::cout << std::endl;
+
+	std::cout << "Breadth First Traversal Queue: ";
+	BFSQueue(root);
+	std::cout << std::endl;
+
 }
 
 BTNode* buildTree(){
@@ -112,4 +121,39 @@ void BFS(BTNode* root){
 		BFSLevel(root, i);
 	}
 
+}
+
+void BFSQueueLevel(BTNode* root, Queue* q){
+
+	q->enqueue(root);
+
+	if(!q->isEmpty()){
+		LLNode * temp = q->dequeue();
+		std::cout << temp->getData() << " ";
+	}
+
+	if(root->getLeft())
+		BFSQueueLevel(root->getLeft(), q);
+
+	if(root->getRight())
+		BFSQueueLevel(root->getRight(), q);
+
+}
+
+void BFSQueue(BTNode* root){
+	Queue * q = new Queue;
+	q->enqueue(root);
+
+	while(!q->isEmpty()){
+		LLNode* temp = q->dequeue();
+		std::cout << temp->getData()->getData() << " ";
+
+		if(temp->getData()->getLeft())
+			q->enqueue(temp->getData()->getLeft());
+
+		if(temp->getData()->getRight())
+			q->enqueue(temp->getData()->getRight());
+
+	}
+	
 }
