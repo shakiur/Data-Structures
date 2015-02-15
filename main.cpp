@@ -4,6 +4,7 @@
 #include "headers/Stack.cpp"
 #include "headers/Queue.cpp"
 #include "headers/Graph.cpp"
+#include "headers/HashMap.cpp"
 
 int main(){
 
@@ -12,6 +13,7 @@ int main(){
 	Stack* s = new Stack;
 	Queue* q = new Queue;
 	Graph* g = new Graph(4);
+	HashMap* h = new HashMap;
 
 	s->push(5);
 	s->push(4);
@@ -52,7 +54,13 @@ int main(){
 	std::cout << "Graph DFS:\n";
 	g->DFS();
 
-	
+	h->insert(111, 1);
+	h->insert(112, 2);
+	h->insert(115, 3);
+	h->insert(120, 5);
+	h->insert(240, 8);
+	h->insert(112, 9);
 
-
+	std::cout << "Hash Map:\n";
+	h->display();
 }
