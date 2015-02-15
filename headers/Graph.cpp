@@ -13,6 +13,27 @@ public:
 		adj_list[source].push_back(dest);
 	}
 
+    void DFS(){
+        bool visited[vertices];
+
+        for(int i = 0; i < vertices; i++){
+            visited[i] = false;
+        }
+
+        for(int i = 0; i < vertices; i++){
+            if(!visited[i]){
+                visited[i] = true;
+                std::cout << i << " ";
+                DFSPrintAdj(visited, adj_list, i);
+            }
+            std::cout << std::endl;
+        }
+    }
+
+    void DFSPrintAdj(bool* visited, std::list<int>* adj_list, int pos){
+
+    }
+
 	
 };
 

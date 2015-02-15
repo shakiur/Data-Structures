@@ -11,6 +11,7 @@ int main(){
 	LLNode* l = new LLNode(5);
 	Stack* s = new Stack;
 	Queue* q = new Queue;
+	Graph* g = new Graph(4);
 
 	s->push(5);
 	s->push(4);
@@ -18,12 +19,14 @@ int main(){
 	s->push(2);
 	s->push(1);
 
+	std::cout << "Stack: ";
 	s->display();
 
 	s->pop();
 	s->pop();
 	s->pop();
 
+	std::cout << "Stack: ";
 	s->display();
 
 	q->enqueue(5);
@@ -32,11 +35,23 @@ int main(){
 	q->enqueue(2);
 	q->enqueue(1);
 
+	std::cout << "Queue: ";
 	q->display();
 
 	q->dequeue();
 	q->dequeue();
 	q->dequeue();
 
+	std::cout << "Queue: ";
 	q->display();
+
+	g->addEdge(0, 1);
+	g->addEdge(0, 2);
+	g->addEdge(3, 3);
+
+	g->DFS();
+
+	
+
+
 }
