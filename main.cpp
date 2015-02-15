@@ -49,6 +49,7 @@ int main(){
 	g->addEdge(0, 2);
 	g->addEdge(3, 3);
 
+	std::cout << "Graph DFS:\n";
 	g->DFS();
 
 	

@@ -25,13 +25,18 @@ public:
                 visited[i] = true;
                 std::cout << i << " ";
                 DFSPrintAdj(visited, adj_list, i);
+                std::cout << std::endl;
             }
-            std::cout << std::endl;
         }
     }
 
     void DFSPrintAdj(bool* visited, std::list<int>* adj_list, int pos){
-
+        for(std::list<int>::iterator it = adj_list[pos].begin(); it != adj_list[pos].end(); it++){
+            if(!visited[*it]){
+                visited[*it] = true;
+                std::cout << *it << " ";
+            }
+        }
     }
 
 	
