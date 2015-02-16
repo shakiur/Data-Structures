@@ -21,21 +21,24 @@ public:
         }
 
         for(int i = 0; i < vertices; i++){
-            if(!visited[i]){
-                visited[i] = true;
-                std::cout << i << " ";
-                DFSPrintAdj(visited, adj_list, i);
-                std::cout << std::endl;
-            }
+            DFSPrintAdj(visited, adj_list, i);
         }
     }
 
     void DFSPrintAdj(bool* visited, std::list<int>* adj_list, int pos){
-        for(std::list<int>::iterator it = adj_list[pos].begin(); it != adj_list[pos].end(); it++){
-            if(!visited[*it]){
-                visited[*it] = true;
-                std::cout << *it << " ";
+        if(!visited[pos]){
+            
+            visited[pos] = true;
+            std::cout << pos << " ";
+            
+            for(std::list<int>::iterator it = adj_list[pos].begin(); it != adj_list[pos].end(); it++){
+                if(!visited[*it]){
+                    visited[*it] = true;
+                    std::cout << *it << " ";
+                }
             }
+
+            std::cout << std::endl;
         }
     }
 
