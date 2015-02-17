@@ -1,10 +1,27 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 #include <list>
+#include <queue>
 
 class Graph{
 	int vertices;
 	std::list<int>* adj_list;
+    void DFSPrintAdj(bool* visited, std::list<int>* adj_list, int pos){
+        if(!visited[pos]){
+
+            visited[pos] = true;
+            std::cout << pos << " ";
+            
+            for(std::list<int>::iterator it = adj_list[pos].begin(); it != adj_list[pos].end(); it++){
+                if(!visited[*it]){
+                    visited[*it] = true;
+                    std::cout << *it << " ";
+                }
+            }
+
+            std::cout << std::endl;
+        }
+    }
 
 public:
 	Graph(int v) : vertices(v), adj_list(new std::list<int>[v]) {}
@@ -25,22 +42,44 @@ public:
         }
     }
 
-    void DFSPrintAdj(bool* visited, std::list<int>* adj_list, int pos){
-        if(!visited[pos]){
-            
-            visited[pos] = true;
-            std::cout << pos << " ";
-            
-            for(std::list<int>::iterator it = adj_list[pos].begin(); it != adj_list[pos].end(); it++){
+    void DFS(int cur_v){
+        bool visited[vertices];
+
+        for(int i = 0; i < vertices; i++){
+            visited[i] = false;
+        }
+
+        DFSPrintAdj(visited, adj_list, cur_v);
+    }
+
+    void BFS(int cur_v){
+        bool visited[vertices];
+
+        for(int i = 0; i < vertices; i++){
+            visited[i] = false;
+        }
+
+        // queue to hold all visited vertices
+        std::queue<int> q;
+
+        q.push(cur_v);
+
+        while(!q.empty()){
+
+            std::cout << cur_v << " ";
+            visited[cur_v] = true;
+
+            q.pop();
+
+            for(std::list<int>::iterator it = adj_list[cur_v].begin(); it != adj_list[cur_v].end(); it++){
                 if(!visited[*it]){
-                    visited[*it] = true;
-                    std::cout << *it << " ";
+                    q.push(*it);
                 }
             }
 
-            std::cout << std::endl;
         }
     }
+
 
 	
 };
