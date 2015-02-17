@@ -52,7 +52,7 @@ int main(){
 	g->addEdge(3, 3);
 
 	std::cout << "Graph DFS:\n";
-	g->DFS();
+	g->BFS(0);
 
 	h->insert(111, 1);
 	h->insert(112, 2);

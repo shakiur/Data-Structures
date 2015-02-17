@@ -52,7 +52,7 @@ public:
         DFSPrintAdj(visited, adj_list, cur_v);
     }
 
-    void BFS(int cur_v){
+    void BFS(int start_v){
         bool visited[vertices];
 
         for(int i = 0; i < vertices; i++){
@@ -62,14 +62,16 @@ public:
         // queue to hold all visited vertices
         std::queue<int> q;
 
-        q.push(cur_v);
+        q.push(start_v);
+
+        int cur_v;
 
         while(!q.empty()){
+            cur_v = q.front();
+            q.pop();
 
             std::cout << cur_v << " ";
             visited[cur_v] = true;
-
-            q.pop();
 
             for(std::list<int>::iterator it = adj_list[cur_v].begin(); it != adj_list[cur_v].end(); it++){
                 if(!visited[*it]){
