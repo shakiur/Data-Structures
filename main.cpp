@@ -51,14 +51,21 @@ int main(){
 	g->addEdge(0, 2);
 	g->addEdge(3, 3);
 
+
 	std::cout << "\nGraph: \n";
 	g->DFS();
 
-	std::cout << "\nHash Table: \n";
+	std::cout << "\nGraph DFS:\n";
+	g->BFS(0);
+
+	std::cout << "\n\nHash Table: \n";
 	hm->pushEntry(5, 5);
 	hm->pushEntry(5, 7);
 	hm->pushEntry(15, 9);
 	hm->pushEntry(133, 14);
 	hm->display();
+
+
+
 
 }
